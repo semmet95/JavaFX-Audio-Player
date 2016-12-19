@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.media.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.*?>
+
+<VBox fx:id="root" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="252.0" prefWidth="290.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.music.player.FXMLDocumentController">
+   <children>
+      <MediaView fx:id="player" fitHeight="2.0" fitWidth="287.0" opacity="0.0" />
+      <ImageView fx:id="albumArt" fitHeight="220.0" fitWidth="292.0" focusTraversable="true" pickOnBounds="true" preserveRatio="true">
+         <effect>
+            <DropShadow />
+         </effect>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+      </ImageView>
+      <ToolBar fx:id="toolContainer" pickOnBounds="false" prefHeight="40.0" prefWidth="557.0">
+        <items>
+          <Button fx:id="prevButton" disable="true" mnemonicParsing="false" onAction="#prevClicked" prefHeight="20.0" prefWidth="32.0" textAlignment="CENTER" />
+            <ToggleButton fx:id="playPause" mnemonicParsing="false" onAction="#playPauseClicked" prefHeight="30.0" prefWidth="45.0" snapToPixel="false" />
+            <Button fx:id="nextButton" disable="true" mnemonicParsing="false" onAction="#nextClicked" prefHeight="20.0" prefWidth="32.0" textAlignment="CENTER" />
+            <Slider fx:id="volume" blockIncrement="0.0" prefWidth="125.0" value="50.0">          
+            </Slider>
+            <Button fx:id="browse" mnemonicParsing="false" onAction="#browseClicked" prefHeight="25.0" prefWidth="28.0" />
+        </items>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </ToolBar>
+   </children>
+   <stylesheets>  
+        <URL value="@styler.css" />
+   </stylesheets>
+</VBox>
