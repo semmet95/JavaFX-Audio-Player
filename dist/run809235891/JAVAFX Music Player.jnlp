@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="JAVAFX Music Player.jnlp">
+  <information>
+    <title>JAVAFX Music Player</title>
+    <vendor>Amit</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+  </resources>
+<security>
+  <all-permissions/>
+</security>
+  <jfx:javafx-desc  width="800" height="600" main-class="javafx.music.player.JAVAFXMusicPlayer"  name="JAVAFX Music Player" />
+  <update check="always"/>
+</jnlp>

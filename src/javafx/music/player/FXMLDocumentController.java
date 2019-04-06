@@ -25,6 +25,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
@@ -44,6 +45,8 @@ public class FXMLDocumentController implements Initializable {
     private Slider volume;
     @FXML
     private ImageView albumArt;
+    @FXML
+    private Button browse;
     private ArrayList<Media> mediaFiles = new ArrayList();
     private int counter = -1;
 
@@ -60,11 +63,11 @@ public class FXMLDocumentController implements Initializable {
     private void playPauseClicked(ActionEvent event) {
         if (firstTime) {
             File file = null;
-            Node node = (Node) event.getSource();
+            Stage stage = (Stage) playPause.getScene().getWindow();
             FileChooser fileChooser = new FileChooser();
             FileChooser.ExtensionFilter fileExtension = new FileChooser.ExtensionFilter("Audio files", "*.mp3", "*.wav");
             fileChooser.getExtensionFilters().add(fileExtension);
-            file = fileChooser.showOpenDialog(node.getScene().getWindow());
+            file = fileChooser.showOpenDialog(stage);
             System.out.println(file);
             if (file != null) {
 
@@ -101,26 +104,26 @@ public class FXMLDocumentController implements Initializable {
                 firstTime = false;
 
             } else {
-                if (playPause.isSelected()) {
-                    player.getMediaPlayer().play();
-                } else {
-                    player.getMediaPlayer().pause();
-                }
+                playPause.setSelected(false);
             }
         } else {
             System.out.println("I'm here");
-            playPause.setSelected(false);
+            if (playPause.isSelected()) {
+                player.getMediaPlayer().play();
+            } else {
+                player.getMediaPlayer().pause();
+            }
         }
     }
 
     @FXML
     private void browseClicked(ActionEvent event) {
         firstTime = false;
-        Node node = (Node) event.getSource();
+        Stage stage = (Stage) playPause.getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter fileExtension = new FileChooser.ExtensionFilter("Audio files", "*.mp3", "*.wav");
         fileChooser.getExtensionFilters().add(fileExtension);
-        File file = fileChooser.showOpenDialog(node.getScene().getWindow());
+        File file = fileChooser.showOpenDialog(stage);
         Media media;
         media = new Media(file.toURI().toASCIIString());
         mediaFiles.add(media);
